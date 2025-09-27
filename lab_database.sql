@@ -1,7 +1,7 @@
 CREATE DATABASE IF NOT EXISTS lab_db;
 USE lab_db;
 
---  tables with NO primary keys or indexes 
+--  tables with only a primary key on orders (changed in Part 3) 
 CREATE TABLE users (
     id BIGINT,
     username VARCHAR(255),
@@ -24,7 +24,7 @@ CREATE TABLE products (
 );
 
 CREATE TABLE orders (
-    id BIGINT,
+    id BIGINT PRIMARY KEY,
     user_id BIGINT,
     product_id BIGINT,
     quantity INT,
