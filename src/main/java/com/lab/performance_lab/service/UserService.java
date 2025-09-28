@@ -1,5 +1,6 @@
 package com.lab.performance_lab.service;
 
+import com.lab.performance_lab.model.DTO.UserProductDTO;
 import com.lab.performance_lab.model.User;
 import com.lab.performance_lab.model.Order;
 import com.lab.performance_lab.repository.UserRepository;
@@ -36,5 +37,9 @@ public class UserService {
 
     public List<User> getFilteredUsers(String status, java.sql.Timestamp dateFrom, java.sql.Timestamp dateTo) {
         return userRepository.findUsersByStatusAndDateRange(status, dateFrom, dateTo);
+    }
+
+    public List<UserProductDTO> getUserProductInfo() {
+        return userRepository.getUserProductInfo();
     }
 }

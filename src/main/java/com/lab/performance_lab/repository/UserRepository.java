@@ -1,5 +1,6 @@
 package com.lab.performance_lab.repository;
 
+import com.lab.performance_lab.model.DTO.UserProductDTO;
 import com.lab.performance_lab.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -17,4 +18,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
             @Param("dateFrom") Timestamp dateFrom,
             @Param("dateTo") Timestamp dateTo
     );
+
+    @Query("SELECT DISTINCT u.username, p.name FROM User u JOIN Order o ON u.id=o.userId JOIN Product p ON p.id=o.productId")
+    List<UserProductDTO> getUserProductInfo();
 }

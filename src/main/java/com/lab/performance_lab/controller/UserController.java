@@ -1,5 +1,6 @@
 package com.lab.performance_lab.controller;
 
+import com.lab.performance_lab.model.DTO.UserProductDTO;
 import com.lab.performance_lab.model.User;
 import com.lab.performance_lab.model.Order;
 import com.lab.performance_lab.service.UserService;
@@ -41,5 +42,10 @@ public class UserController {
             @RequestParam Timestamp dateTo
     ) {
         return userService.getFilteredUsers(status, dateFrom, dateTo);
+    }
+
+    @GetMapping("/getUserProductInfo")
+    public List<UserProductDTO> getUserProductInfo() {
+        return userService.getUserProductInfo();
     }
 }
