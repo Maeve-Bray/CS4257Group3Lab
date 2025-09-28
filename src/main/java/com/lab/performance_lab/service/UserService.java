@@ -33,4 +33,8 @@ public class UserService {
     public Page<Order> getUserOrdersPaged(Long userId, Pageable pageable) {
         return orderRepository.findByUserId(userId, pageable);
     }
+
+    public List<User> getFilteredUsers(String status, java.sql.Timestamp dateFrom, java.sql.Timestamp dateTo) {
+        return userRepository.findUsersByStatusAndDateRange(status, dateFrom, dateTo);
+    }
 }

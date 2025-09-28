@@ -6,7 +6,7 @@ import com.lab.performance_lab.service.UserService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
-
+import java.sql.Timestamp;
 import java.util.List;
 
 @RestController
@@ -32,5 +32,14 @@ public class UserController {
     @GetMapping("/{id}/orders/page")
     public Page<Order> getOrdersPaged(@PathVariable Long id, Pageable pageable) {
         return userService.getUserOrdersPaged(id, pageable);
+    }
+
+    @GetMapping("/filter")
+    public List<User> getFilteredUsers(
+            @RequestParam String status,
+            @RequestParam Timestamp dateFrom,
+            @RequestParam Timestamp dateTo
+    ) {
+        return userService.getFilteredUsers(status, dateFrom, dateTo);
     }
 }
