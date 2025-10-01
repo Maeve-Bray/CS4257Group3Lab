@@ -6,7 +6,7 @@ services:
       MYSQL_DATABASE: lab_db
       MYSQL_ROOT_PASSWORD: password
     ports:
-      - "3307:3306"
+      - "33065:3306"
 
   redis:
     image: redis:latest
