@@ -39,7 +39,7 @@ DELIMITER $$
 CREATE PROCEDURE GenerateSampleData()
 BEGIN
     DECLARE i INT DEFAULT 1;
-    WHILE i <= 1000 DO
+    WHILE i <= 10000 DO
         INSERT INTO users (id, username, email, first_name, last_name, status)
         VALUES (i, CONCAT('user', i), CONCAT('user', i, '@example.com'),
                 CONCAT('FirstName', i), CONCAT('LastName', i),
@@ -49,7 +49,7 @@ BEGIN
 
     -- 50,000 products
     SET i = 1;
-    WHILE i <= 5000 DO
+    WHILE i <= 75000 DO
         INSERT INTO products (id, name, description, price, category, in_stock)
         VALUES (i, CONCAT('Product ', i),
                 CONCAT('Description for product ', i, ' with many details...'),
@@ -61,11 +61,11 @@ BEGIN
 
     -- 1,000,000 orders 
     SET i = 1;
-    WHILE i <= 10000 DO
+    WHILE i <= 100000 DO
         INSERT INTO orders (id, user_id, product_id, quantity, total_amount, order_date, status)
         VALUES (i,
                 1 + FLOOR(RAND() * 10000),
-                1 + FLOOR(RAND() * 5000),
+                1 + FLOOR(RAND() * 75000),
                 1 + FLOOR(RAND() * 10),
                 ROUND(RAND() * 1000, 2),
                 DATE_SUB(NOW(), INTERVAL FLOOR(RAND() * 365) DAY),
